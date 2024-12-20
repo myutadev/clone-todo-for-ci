@@ -6,14 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    protected $fillable = [
-        'title',
-        'name',
-        'description',
-        'priority',
-        'status',
-    ];
-
     public function up(): void
     {
         Schema::create('tasks', function (Blueprint $table) {

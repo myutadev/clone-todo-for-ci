@@ -9,11 +9,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('labels', function (Blueprint $table) {
-            $table->id();
-            $table->string('name',50)->nullable(false);
+            $table->id()->comment('主キー');
+            $table->string('name',50)->comment('ラベル名');
         });
     }
-
 
     public function down(): void
     {

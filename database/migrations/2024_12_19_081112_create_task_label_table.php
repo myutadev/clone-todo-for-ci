@@ -13,6 +13,7 @@ return new class extends Migration
             $table->foreignId('label_id')->constrained();
         });
     }
+
     public function down(): void
     {
         Schema::dropIfExists('label_task');

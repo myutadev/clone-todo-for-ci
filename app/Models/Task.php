@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Task extends Model
 {
     protected $fillable = [
-        'title',
         'name',
         'description',
         'priority',

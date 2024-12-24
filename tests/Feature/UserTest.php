@@ -16,6 +16,6 @@ class UserTest extends TestCase
     {
         $user = User::factory()->create();
         Task::factory(5)->for($user)->create();
-        $this->assertCount(5,$user->tasks);
+        $this->assertSame(5, $user->tasks->count());
     }
 }

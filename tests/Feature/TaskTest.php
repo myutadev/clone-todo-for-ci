@@ -29,7 +29,7 @@ class TaskTest extends TestCase
         $label2 = Label::factory()->create();
         $task->labels()->attach($label1->id);
         $task->labels()->attach($label2->id);
-        $this->assertCount(2,$task->labels);
+        $this->assertSame(2, $task->labels->count());
     }
 
     public function test_belongsToManyでラベルがないときは空のコレクションを返す(): void

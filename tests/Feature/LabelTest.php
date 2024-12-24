@@ -20,7 +20,7 @@ class LabelTest extends TestCase
         $label->tasks()->attach($tasks[0]->id);
         $label->tasks()->attach($tasks[1]->id);
 
-        $this->assertCount(2,$label->tasks);
+        $this->assertSame(2, $label->tasks->count());
     }
 
     public function test_belongsToManyでタスクがないときは空のコレクションを返す(): void

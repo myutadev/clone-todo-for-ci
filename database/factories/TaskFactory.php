@@ -14,11 +14,11 @@ class TaskFactory extends Factory
     public function definition(): array
     {
         return [
-                'user_id'=>User::factory(),
-                'name'=>fake()->realText(10),
-                'description'=>fake()->realText(30),
-                'priority'=>1,
-                'status'=>1
+                'user_id' => User::factory(),
+                'name' => fake()->userName(10),
+                'description' => fake()->realText(30),
+                'priority' => 1,
+                'status' => 1
         ];
     }
 }

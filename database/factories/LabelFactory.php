@@ -13,7 +13,7 @@ class LabelFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'=>fake()->realText(10)
+            'name' => fake()->word()
         ];
     }
 }

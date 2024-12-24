@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Database\Factories;
@@ -14,12 +15,12 @@ class TaskFactory extends Factory
     public function definition(): array
     {
         return [
-                // @todo Enum対応する
-                'user_id' => User::factory(),
-                'name' => fake()->userName(10),
-                'description' => fake()->realText(30),
-                'priority' => 1,
-                'status' => 1
+            // @todo Enum対応する
+            'user_id' => User::factory(),
+            'name' => fake()->userName(10),
+            'description' => fake()->realText(30),
+            'priority' => 1,
+            'status' => 1,
         ];
     }
 }

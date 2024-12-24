@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Models;
@@ -23,7 +24,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'user_type'
+        'user_type',
     ];
 
     /**
@@ -49,7 +50,7 @@ class User extends Authenticatable
         ];
     }
 
-    public function tasks():HasMany
+    public function tasks(): HasMany
     {
         return $this->hasMany(Task::class);
     }

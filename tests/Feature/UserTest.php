@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Tests\Feature;
@@ -12,7 +13,7 @@ class UserTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_hasManyでリレーション先のインスタンスが取得できる(): void
+    public function test_has_manyでリレーション先のインスタンスが取得できる(): void
     {
         $user = User::factory()->create();
         Task::factory(5)->for($user)->create();

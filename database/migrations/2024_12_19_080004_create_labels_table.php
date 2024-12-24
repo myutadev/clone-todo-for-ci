@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('labels', function (Blueprint $table) {
             $table->id()->comment('主キー');
-            $table->string('name',50)->comment('ラベル名');
+            $table->string('name', 50)->comment('ラベル名');
         });
     }
 

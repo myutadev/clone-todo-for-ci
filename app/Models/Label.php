@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Models;
@@ -17,7 +18,7 @@ class Label extends Model
         'name',
     ];
 
-    public function tasks():BelongsToMany
+    public function tasks(): BelongsToMany
     {
         return $this->belongsToMany(Task::class);
     }

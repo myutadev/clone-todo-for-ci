@@ -1,11 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Tests\Feature;
 
+use App\Models\Label;
 use App\Models\Task;
 use App\Models\User;
-use App\Models\Label;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -15,14 +16,14 @@ class TaskTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_belongsToでリレーション先のユーザーが取得できる(): void
+    public function test_belongs_toでリレーション先のユーザーが取得できる(): void
     {
         $user = User::factory()->create();
         $task = Task::factory()->for($user)->create();
-        assertEquals($user->id,$task->user->id);
+        assertEquals($user->id, $task->user->id);
     }
 
-    public function test_belongsToManyでリレーション先のラベルが取得できる(): void
+    public function test_belongs_to_manyでリレーション先のラベルが取得できる(): void
     {
         $task = Task::factory()->create();
         $label1 = Label::factory()->create();
@@ -32,7 +33,7 @@ class TaskTest extends TestCase
         $this->assertSame(2, $task->labels->count());
     }
 
-    public function test_belongsToManyでラベルがないときは空のコレクションを返す(): void
+    public function test_belongs_to_manyでラベルがないときは空のコレクションを返す(): void
     {
         $task = Task::factory()->create();
         $this->assertEmpty($task->labels);

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Models;
@@ -19,12 +20,12 @@ class Task extends Model
         'status',
     ];
 
-    public function user():BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function labels():BelongsToMany
+    public function labels(): BelongsToMany
     {
         return $this->belongsToMany(Label::class);
     }

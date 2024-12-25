@@ -38,4 +38,22 @@ class TaskTest extends TestCase
         $task = Task::factory()->create();
         $this->assertEmpty($task->labels);
     }
+
+    public function test_priorityがenum形式を返す(): void
+    {
+        $task = Task::factory()->create([
+            'priority' => 1,
+        ]);
+        $this->assertSame('LOW', $task->priority->name);
+        $this->assertSame('低', $task->priority->label());
+    }
+
+    public function test_statusがenum形式を返す(): void
+    {
+        $task = Task::factory()->create([
+            'status' => 1,
+        ]);
+        $this->assertSame('NOT_STARTED', $task->status->name);
+        $this->assertSame('未対応', $task->status->label());
+    }
 }

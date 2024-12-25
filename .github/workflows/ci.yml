@@ -1,0 +1,74 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  testsuite:
+    name: Unittest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Docker Compose
+        run: docker compose up -d
+
+      - name: Install dependencies
+        run: |
+          docker compose exec laravel.test composer install
+
+      - name: Copy .env
+        run: |
+          docker compose exec laravel.test cp .env.ci .env
+
+      - name: Generate application key
+        run: |
+          docker compose exec laravel.test php artisan key:generate
+
+      - name: Run migrations
+        run: |
+          docker compose exec laravel.test php artisan migrate --force
+
+      - name: Run PHPUnit tests
+        run: |
+          docker compose exec laravel.test vendor/bin/phpunit
+
+  coding-standard:
+    name: Pint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/setup-php
+
+      - name: Execute pint
+        run: vendor/bin/pint -v --test
+  static-analysis:
+    name: Larastan
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/setup-php
+
+      - name: Run larastan
+        run: vendor/bin/phpstan analyse --memory-limit=-1
+  react-ci:
+    name: react-ci
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: npm install
+        run: npm i
+
+      - name: Run format and lint
+        run: npm run ci

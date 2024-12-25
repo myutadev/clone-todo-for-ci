@@ -1,0 +1,22 @@
+name: Setup PHP
+description: Setup PHP for testsuite
+
+runs:
+  using: composite
+  steps:
+    - uses: shivammathur/setup-php@v2
+      with:
+        php-version: "8.4"
+        extensions: mbstring, intl
+        coverage: none
+
+    - id: cache-vendor
+      uses: actions/cache@v4
+      with:
+        path: ./vendor
+        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-composer-
+    - if: steps.cache-vendor.outputs.cache-hit != 'true'
+      run: composer install --ignore-platform-reqs
+      shell: bash

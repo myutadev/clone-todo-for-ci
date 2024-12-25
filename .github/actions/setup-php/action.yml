@@ -20,3 +20,4 @@ runs:
     - if: steps.cache-vendor.outputs.cache-hit != 'true'
       run: composer install --ignore-platform-reqs
       shell: bash
+      

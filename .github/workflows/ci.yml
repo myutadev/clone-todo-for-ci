@@ -16,6 +16,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install dependencies
+        run: composer install
+
+      - name: Install Laravel Sail
+        run: composer require laravel/sail --dev
+
       - name: Set up Docker Compose
         run: docker compose up -d
 

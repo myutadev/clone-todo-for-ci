@@ -19,4 +19,15 @@ class UserTest extends TestCase
         Task::factory(5)->for($user)->create();
         $this->assertSame(5, $user->tasks->count());
     }
+
+    public function test_user_typeがenum形式で値を返す(): void
+    {
+        $user = User::factory()->create([
+            'user_type' => 1,
+        ]);
+        dump($user);
+
+        $this->assertSame('ADMIN', $user->user_type->name);
+        $this->assertSame('管理者', $user->user_type->label());
+    }
 }

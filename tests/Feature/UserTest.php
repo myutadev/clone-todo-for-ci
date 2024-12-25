@@ -25,7 +25,6 @@ class UserTest extends TestCase
         $user = User::factory()->create([
             'user_type' => 1,
         ]);
-        dump($user);
 
         $this->assertSame('ADMIN', $user->user_type->name);
         $this->assertSame('管理者', $user->user_type->label());

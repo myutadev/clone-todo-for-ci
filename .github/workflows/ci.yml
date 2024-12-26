@@ -37,6 +37,9 @@ jobs:
         run: |
           docker compose exec laravel.test php artisan key:generate
 
+      - name: Check Docker Compose status
+        run: docker compose ps
+
       - name: Run migrations
         run: |
           docker compose exec laravel.test php artisan migrate --force

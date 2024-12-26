@@ -19,7 +19,7 @@ jobs:
         env:
           MYSQL_ROOT_PASSWORD: password
           MYSQL_DATABASE: testing
-          MYSQL_USER: root
+          MYSQL_USER: sail
           MYSQL_PASSWORD: password
         ports:
           - 3307:3306
@@ -29,7 +29,7 @@ jobs:
       DB_HOST: mysql
       DB_PORT: 3306
       DB_DATABASE: testing
-      DB_USERNAME: root
+      DB_USERNAME: sail
       DB_PASSWORD: password
 
     steps:

@@ -63,7 +63,7 @@ jobs:
           npm run build
       - name: start server
         run: |
-          ./vendor/bin/sail artisan serve
+          ./vendor/bin/sail artisan serve -d
       - name: Execute tests
         run: |
           ./vendor/bin/sail test

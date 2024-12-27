@@ -50,32 +50,16 @@ jobs:
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.ci', '.env');"
 
-      - name: start mysql
-        run: ./vendor/bin/sail up -d mysql
-
-      - name: Start Sail
-        run: |
-          ./vendor/bin/sail up -d
+      - name: Generate key
+        run: php artisan key:generate
 
       - name: Set Up Database
         run: |
-          ./vendor/bin/sail artisan migrate --seed
-
-      - name: Delete old node_modules and package-lock.json
-        run: |
-          rm -rf package-lock.json
-
-      - name: npm install
-        run: |
-          npm install
-
-      - name: Build assets
-        run: |
-          npm run build
+          php artisan migrate
 
       - name: Execute tests
         run: |
-          ./vendor/bin/sail test
+          php artisan test
 
   # coding-standard:
   #   name: Pint

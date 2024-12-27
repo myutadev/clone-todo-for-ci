@@ -52,6 +52,9 @@ jobs:
       - name: Set Up Database
         run: |
           ./vendor/bin/sail artisan migrate --seed
+      - name: Delete old node_modules and package-lock.json
+        run: |
+          rm -rf node_modules package-lock.json
       - name: npm install
         run: |
           npm install

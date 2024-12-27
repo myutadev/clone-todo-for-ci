@@ -43,7 +43,7 @@ jobs:
       #   run: |
       #     curl -sS https://getcomposer.org/installer | php -- --version=2.7.6
       #     sudo mv composer.phar /usr/local/bin/composer
-          composer install --no-interaction --prefer-dist
+          # composer install --no-interaction --prefer-dist
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.ci', '.env');"
       - name: start mysql

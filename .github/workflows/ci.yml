@@ -54,13 +54,13 @@ jobs:
           ./vendor/bin/sail artisan migrate --seed
       - name: Delete old node_modules and package-lock.json
         run: |
-          rm -rf node_modules package-lock.json
+          rm -rf package-lock.json
       - name: npm install
         run: |
           npm install
-      - name: Execure npm run dev
+      - name: Build assets
         run: |
-          npm run dev
+          npm run build
       - name: Execute tests
         run: |
           ./vendor/bin/sail test

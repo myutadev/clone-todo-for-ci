@@ -52,6 +52,9 @@ jobs:
       - name: Set Up Database
         run: |
           ./vendor/bin/sail artisan migrate --seed
+      - name: Set Up Database
+        run: |
+          npm run dev
       - name: Execute tests
         run: |
           ./vendor/bin/sail test

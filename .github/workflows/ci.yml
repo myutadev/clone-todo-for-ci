@@ -36,6 +36,7 @@ jobs:
       - uses: actions/checkout@v4
       #これだとマイグレーションで失敗する
       # - uses: ./.github/actions/setup-php
+      
 
       - uses: shivammathur/setup-php@2
         with:

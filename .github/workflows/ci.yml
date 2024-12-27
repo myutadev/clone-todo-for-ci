@@ -44,8 +44,8 @@ jobs:
           composer install --no-interaction --prefer-dist
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.ci', '.env');"
-      # - name: start mysql
-      #   run: ./vendor/bin/sail up -d mysql
+      - name: start mysql
+        run: ./vendor/bin/sail up -d mysql
       - name: Start Sail
         run: |
           ./vendor/bin/sail up -d

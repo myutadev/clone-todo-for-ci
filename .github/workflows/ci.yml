@@ -50,6 +50,14 @@ jobs:
         run: |
           php artisan migrate
 
+      - name: npm install
+        run: |
+          npm install
+
+      - name: build
+        run: |
+          npm run build
+
       - name: Execute tests
         run: |
           php artisan test

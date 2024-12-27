@@ -35,17 +35,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       #これだとマイグレーションで失敗する
-      # - uses: ./.github/actions/setup-php
-      
+      - uses: ./.github/actions/setup-php
 
-      - uses: shivammathur/setup-php@2
-        with:
-          php-version: '8.2'
-      - name: Install Dependencies
-        run: |
-          curl -sS https://getcomposer.org/installer | php -- --version=2.7.6
-          sudo mv composer.phar /usr/local/bin/composer
-          composer install --no-interaction --prefer-dist
+
+      # - uses: shivammathur/setup-php@2
+      #   with:
+      #     php-version: '8.2'
+      # - name: Install Dependencies
+      #   run: |
+      #     curl -sS https://getcomposer.org/installer | php -- --version=2.7.6
+      #     sudo mv composer.phar /usr/local/bin/composer
+      #     composer install --no-interaction --prefer-dist
 
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.ci', '.env');"
